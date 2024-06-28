@@ -3,7 +3,14 @@ from enum import Enum
 class PropertyStatus(Enum):
     AVAILABLE = 'Available'
     SOLD = 'Sold'
+class Status(Enum):
+    AVAILABLE = "Available"
+    SOLD = "Sold"
 class Property:
+    APARTMENT = 'Apartment'
+    HOUSE = 'House'
+    COMMERCIAL = 'Commercial'
+    LAND = 'Land'
     def __init__(self, property_id, address, price, property_type, status=PropertyStatus.AVAILABLE, owner=None):
         self.property_id = property_id
         self.address = address

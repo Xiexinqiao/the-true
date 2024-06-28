@@ -1,7 +1,6 @@
 import unittest
 from realestate.toolbox.AVLTree import AVLTree
 from realestate.toolbox.Property import Property
-from realestate.toolbox.PropertyType import PropertyType
 
 
 # 测试AVL树
@@ -12,9 +11,9 @@ class TestAVLTree(unittest.TestCase):
         self.tree = AVLTree()
         # 创建一个房产列表
         self.properties = [
-            Property(1, "123 Main St", 250000, PropertyType.HOUSE),
-            Property(2, "456 Maple Ave", 300000, PropertyType.APARTMENT),
-            Property(3, "789 Oak Dr", 150000, PropertyType.LAND)
+            Property(1, "123 Main St", 250000, Property.HOUSE),
+            Property(2, "456 Maple Ave", 300000, Property.APARTMENT),
+            Property(3, "789 Oak Dr", 150000, Property.LAND)
         ]
 
     # 测试插入操作

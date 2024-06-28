@@ -5,8 +5,8 @@ from Client import Client
 from AVLTree import AVLTree
 from Queue import Queue
 # 读取数据集文件
-properties_df = pd.read_csv(r'C:\Users\lenovo\Desktop\the true\realestate\toolbox\real_estate_properties_dataset.csv')
-clients_df = pd.read_csv(r'C:\Users\lenovo\Desktop\the true\realestate\toolbox\client_requests_dataset.csv')
+properties_df = pd.read_csv(r'C:\Users\lenovo\Desktop\the true\realestate\toolbox\data\real_estate_properties_dataset.csv')
+clients_df = pd.read_csv(r'C:\Users\lenovo\Desktop\the true\realestate\toolbox\data\client_requests_dataset.csv')
 
 # 初始化AVL树和队列
 property_tree = AVLTree()
