@@ -1,4 +1,3 @@
-
 class AVLNode:
     def __init__(self, key, value):
         self.key = key
@@ -7,7 +6,6 @@ class AVLNode:
         self.left = None
         self.right = None
 
-# 定义AVL树类
 class AVLTree:
     def __init__(self):
         self.root = None

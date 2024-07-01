@@ -1,17 +1,24 @@
 
 from enum import Enum
+
+class PropertyType(Enum):
+    APARTMENT = 'Apartment'
+    HOUSE = 'House'
+    COMMERCIAL = 'Commercial'
+    LAND = 'Land'
+
 class PropertyStatus(Enum):
     AVAILABLE = 'Available'
     SOLD = 'Sold'
 class Property:
-    def __init__(self, property_id, address, price, property_type, status=PropertyStatus.AVAILABLE, owner=None):
+    def __init__(self, property_id, address, price, property_type, status='Available', owner=None):
         self.property_id = property_id
         self.address = address
         self.price = price
-        self.property_type = property_type
-        self.status = status
+        self.property_type = PropertyType[property_type.upper()]
+        self.status = PropertyStatus[status.upper()]
         self.owner = owner
-
+    
     def __repr__(self):
         return f"Property({self.property_id}, {self.address}, {self.price}, {self.property_type}, {self.status}, {self.owner})"
 

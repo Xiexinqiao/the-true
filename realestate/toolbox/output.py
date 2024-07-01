@@ -1,28 +1,31 @@
-# 加载CSV数据集并初始化AVL树和队列
-import pandas as pd
-from Property import Property
-from Client import Client
+import csv
 from AVLTree import AVLTree
 from Queue import Queue
-# 读取数据集文件
-properties_df = pd.read_csv(r'C:\Users\lenovo\Desktop\the true\realestate\toolbox\data\real_estate_properties_dataset.csv')
-clients_df = pd.read_csv(r'C:\Users\lenovo\Desktop\the true\realestate\toolbox\data\client_requests_dataset.csv')
-
+from Client import Client
+from Property import Property
 # 初始化AVL树和队列
 property_tree = AVLTree()
-root = None
 client_queue = Queue()
+root = None # 初始化根节点为None
 
-# 从数据集中加载房产信息
-for index, row in properties_df.iterrows():
-    prop = Property(row['property_ID'], row['address'], row['price'], row['property_type'], row['status'], row['owner'])
-    root = property_tree.insert(root, prop.property_id, prop)
+# 从CSV文件加载房产信息
+filename = 'THETRUE\data\real_estate_properties_dataset.csv'
+with open(filename, mode='r', encoding='utf-8') as file:
+        csv_reader = csv.reader(file)
+        next(csv_reader) # 跳过标题行
+        for row in csv_reader:
+            prop = Property(*row) # 假设Property构造函数接受多个参数
+            root = property_tree.insert(root, prop.property_id, prop) # 假设insert方法可以将Property实例添加到树中
 
-# 从数据集中加载客户信息
-for index, row in clients_df.iterrows():
-    client = Client(row['client_ID'], row['name'], row['contact_info'], row['budget'],row['price'])
-    client_queue.enqueue(client)
+# 从CSV文件加载客户信息
+filename = 'data\client_requests_dataset.csv'
+with open(filename, mode='r', encoding='utf-8') as file:
+    csv_reader = csv.reader(file)
+    next(csv_reader) # 跳过标题行
+    for row in csv_reader:
+         client = Client(*row) # 假设Client构造函数接受多个参数
+         client_queue.enqueue(client) # 假设enqueue方法可以将Client实例添加到队列中
 
 # 打印加载结果
-print("AVL Tree Root:", root.value)
+print("AVL Tree Root:", root.value) # 假设AVL树的节点有一个value属性
 print("Client Queue:", client_queue)
